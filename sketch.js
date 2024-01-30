@@ -33,37 +33,32 @@ function setup() {
 
 
 function draw() {
-  background(255);
- if(tower.y > ){
-      tower.y = 300
-    } 
-  
-  if (gameState === "play") {
-    
-    if(keyDown("")){
-        ghost.x = ghost.x - 3;
-
-      // escreva o código para mover para a esquerda quando a tecla para a esquerda for pressionada
-    }
-    if(keyDown("")){
-  
-          ghost.x = ghost.x + 3;
-
-      // escreva o código para mover para a direita quando a tecla para a direita for pressionada
+  background(0);
+ if(gameState === "play") {
+if(keyDown("left_arrow")){
+  ghost.x - 3
+}
       
+ if(keyDown("right_arrow")){
+        ghost.x = ghost.x + 3;
+
+
     }
+    if(keyDown("space")){
+   ghost.velocityY = -10
+
+}
     if(keyDown("")){
   
-         ghost.velocityY = -10;
-
-      // escreva o código para mover para cima quando a tecla espaço for pressionada
-      
-    }
+         ghost.velocityY = -10
+      }
   
   ghost.velocityY = ghost.velocityY + 0.8;
   
-   
-      //escreva uma condição para a torre de rolagem infinita
+   if(tower.y > 400 ){
+    tower.y = 300
+   }
+    
     
       spawnDoors();
 
@@ -73,8 +68,8 @@ function draw() {
       ghost.velocityY = 0;
     }
     if(invisibleBlockGroup.isTouching(ghost) || ghost.y > 600){
-      ghost.
-      gameState = ""
+      ghost.destroy();
+      gameState = "end"
     }
     
   
@@ -107,17 +102,18 @@ function spawnDoors()
     invisibleBlock.velocityY = 1;
 
     //mude a profundidade do fantasma e da porta
-    
+    ghost.depth = door.depth;
+    ghost.depth +=1;
      
 ghost.depth = door.depth;
     ghost.depth =1;
     
-    //atribuir tempo de vida para a porta, escalador e bloco invisível
 
- .lifetime = 800;
-    .lifetime = 800;
-    .lifetime = 800;
-    //adicione cada obstáculo ao grupo obstaclesGroup.add(obstacle); aqui os obstáculos são as portas, o escalador e o bloco invisível
+
+    door.lifetime = 800;
+    climber.lifetime = 800;
+    invisibleBlock.lifetime = 800;
+
     
      doorsGroup.add();
     invisibleBlock.debug = true;
